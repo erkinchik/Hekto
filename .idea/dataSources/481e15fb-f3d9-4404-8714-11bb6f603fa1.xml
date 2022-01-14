@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="online_store">
+  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.18">
+    <root id="1">
+      <ServerVersion>13.5</ServerVersion>
+      <StartupTime>1640643186</StartupTime>
+    </root>
+    <database id="2" parent="1" name="node_postgres">
+      <ObjectId>16394</ObjectId>
+      <Owner>postgres</Owner>
+    </database>
+    <database id="3" parent="1" name="online_store">
+      <ObjectId>16422</ObjectId>
+      <Owner>postgres</Owner>
+      <IntrospectionStateNumber>544</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Relations>sequence|table|16423|16425|1
+sequence|table|16435|16437|1
+sequence|table|16448|16450|1
+sequence|table|16456|16458|1
+sequence|table|16464|16466|1
+sequence|table|16493|16495|1
+sequence|table|16511|16513|1
+sequence|table|16524|16528|1
+sequence|table|16526|16528|2
+sequence|table|16571|16573|1
+</Relations>
+    </database>
+    <database id="4" parent="1" name="postgres">
+      <ObjectId>13442</ObjectId>
+      <Comment>default administrative connection database</Comment>
+      <Owner>postgres</Owner>
+    </database>
+    <role id="5" parent="1" name="pg_execute_server_program">
+      <ObjectId>4571</ObjectId>
+    </role>
+    <role id="6" parent="1" name="pg_monitor">
+      <ObjectId>3373</ObjectId>
+    </role>
+    <role id="7" parent="1" name="pg_read_all_settings">
+      <ObjectId>3374</ObjectId>
+    </role>
+    <role id="8" parent="1" name="pg_read_all_stats">
+      <ObjectId>3375</ObjectId>
+    </role>
+    <role id="9" parent="1" name="pg_read_server_files">
+      <ObjectId>4569</ObjectId>
+    </role>
+    <role id="10" parent="1" name="pg_signal_backend">
+      <ObjectId>4200</ObjectId>
+    </role>
+    <role id="11" parent="1" name="pg_stat_scan_tables">
+      <ObjectId>3377</ObjectId>
+    </role>
+    <role id="12" parent="1" name="pg_write_server_files">
+      <ObjectId>4570</ObjectId>
+    </role>
+    <role id="13" parent="1" name="postgres">
+      <ObjectId>10</ObjectId>
+      <SuperRole>1</SuperRole>
+      <CreateDb>1</CreateDb>
+      <CreateRole>1</CreateRole>
+      <CanLogin>1</CanLogin>
+      <Replication>1</Replication>
+      <BypassRls>1</BypassRls>
+    </role>
+  </database-model>
+</dataSource>
