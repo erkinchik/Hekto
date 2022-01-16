@@ -1,22 +1,18 @@
-const uuid = require("uuid");
-const path = require("path");
 const deviceService = require("../services/deviceService");
-const db = require('../db')
 
 class DeviceController {
   async create(req, res, next) {
     try {
-      const { name, price, brandId, typeId, info } = req.body;
+      let { name, price, brandId, typeId, info } = req.body;
       const { img } = req.files;
-      let fileName = uuid.v4() + ".jpg";
-      img.mv(path.resolve(__dirname, "..", "static", fileName));
-
       const device = await deviceService.createDevice(
         name,
         price,
         brandId,
         typeId,
-        fileName
+        img,
+        info
+
       );
 
       res.json( device );
@@ -24,19 +20,33 @@ class DeviceController {
       next(e);
     }
 
-    // const device = await deviceService.createDevice({
-    //   name,
-    //   price,
-    //   brandId,
-    //   typeId,
-    //   img: fileName,
-    // });
   }
-  async get(req, res) {}
-  async getOne(req, res) {}
-  async post(req, res) {}
+  async get(req, res,next) {
+    try{
+      const {brandId,typeId,limit,page} = req.query
+      const devices = await deviceService.getAll(brandId,typeId,limit,page)
+
+      res.json(devices)
+    }catch (e) {
+      next(e)
+    }
+
+
+  }
+  async getOne(req, res,next) {
+    try{
+      const {id} = req.params
+      const deviceById = await deviceService.getById(id)
+      res.json(deviceById)
+    }catch (e) {
+      next(e)
+    }
+
+  }
   async update(req, res) {}
-  async delete(req, res) {}
+  async delete(req, res) {
+    res.json(await deviceService.delete(req.params.id))
+  }
 }
 
 module.exports = new DeviceController();

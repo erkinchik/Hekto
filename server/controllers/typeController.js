@@ -3,7 +3,7 @@ class TypeController {
     async create(req,res,next){
         try{
             const {name} = req.body
-            const type = await typeService.createType(nme)
+            const type = await typeService.createType(name)
 
             res.json(type)
         }

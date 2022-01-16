@@ -45,14 +45,17 @@
 --   description VARCHAR(300)
 --);
 
-create TABLE rating(
-   id SERIAL PRIMARY KEY,
-   user_id INTEGER,
-   FOREIGN KEY (user_id) REFERENCES "user" (id),
-   device_id INTEGER,
-   FOREIGN KEY (device_id) REFERENCES device (id),
-   rate INTEGER
-);
-create TABLE brand_type(
-   id SERIAL PRIMARY KEY
-);
+-- create TABLE rating(
+--    id SERIAL PRIMARY KEY,
+--    user_id INTEGER,
+--    FOREIGN KEY (user_id) REFERENCES "user" (id),
+--    device_id INTEGER,
+--    FOREIGN KEY (device_id) REFERENCES device (id),
+--    rate INTEGER
+-- );
+-- create TABLE brand_type(
+--    id SERIAL PRIMARY KEY
+-- );
+
+SELECT title, description FROM device_info UNION ALL SELECT name, price FROM device;
+  DELETE FROM device WHERE id IN (SELECT device_id FROM device_info WHERE device_id = $1);
