@@ -1,0 +1,86 @@
+@import "src/index";
+
+.header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.header-inner {
+  width: 100%;
+  padding: 25px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  &__logo {
+    font-size: 1.8em;
+  }
+}
+
+.header-inner__navBar {
+  display: flex;
+  align-items: center;
+
+  & li {
+    display: flex;
+    align-items: center;
+    margin-left: 35px;
+    cursor: pointer;
+    transition:  color 0.2s linear;
+  }
+  & li:hover {
+    color: $purple;
+  }
+  & li:first-child {
+    margin-left: 0;
+  }
+  & li:hover::after {
+    opacity: 1;
+  }
+  & li::after {
+    content: "";
+    margin-left: 5px;
+    display: inline-block;
+    opacity: 0;
+    width: 15px;
+    height: 15px;
+    background-image: url("../../assets/arrow-down.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    transition: opacity .2s linear;
+  }
+}
+
+.search {
+  width: 20%;
+  display: flex;
+  &__field {
+    width: 100%;
+    height: 40px;
+    border: 2px solid #e7e6ef;
+    border-right: none;
+    border-radius: 0;
+    outline: none;
+    font-size: 1.3em;
+    padding-left: 5px;
+  }
+  &__btn {
+    cursor: pointer;
+
+    background-color: $purple;
+    outline: none;
+    border: none;
+    padding: 2px 13px;
+  }
+  &__btn::after {
+    content: "";
+    width: 18px;
+    height: 18px;
+    display: block;
+    background-image: url("../../assets/search-icon.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+}
