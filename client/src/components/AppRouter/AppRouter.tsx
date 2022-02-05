@@ -2,7 +2,7 @@ import React, {FC} from "react";
 import { Switch, Redirect, Route} from "react-router-dom";
 
 import { routes } from "../../routes/routes";
-import { HOME_ROUTE } from "../../utils/paths";
+import {HOME_ROUTE, NOT_FOUND} from "../../utils/paths";
 
 const AppRouter: FC = () => {
 
@@ -11,7 +11,7 @@ const AppRouter: FC = () => {
       {routes.map(({ path, Component }) => (
         <Route key={path} path={path} component={Component} exact={true} />
       ))}
-      <Redirect to={HOME_ROUTE} />
+      <Redirect to={NOT_FOUND} />
     </Switch>
   );
 };

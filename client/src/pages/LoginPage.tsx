@@ -12,7 +12,7 @@ const LoginPage = () => {
         title: 'Login',
         subtitle: 'Please login using account detail bellow.',
         fromText: 'Don’t have an Account?Create account',
-        btnText: 'sign in',
+        btnText: 'Sign in',
         linkTo: REGISTRATION_ROUTE
     }
 
@@ -20,12 +20,12 @@ const LoginPage = () => {
         title: 'Registration',
         subtitle: 'Please Register using account detail bellow.',
         fromText: 'Already have an account?Login',
-        btnText: 'sign up',
+        btnText: 'Sign up',
         linkTo: LOGIN_ROUTE
     }
 
     return (
-        <div className="login-container" style={{display:'flex', justifyContent:'center', alignItems:'center', width:'100%', height:'100%'}}>
+        <div className="login-section" style={{display:'flex', justifyContent:'center', alignItems:'center', width:'100%', height:'100%'}}>
             <Auth data={pathname == LOGIN_ROUTE ? login : registration}></Auth>
         </div>
     );
