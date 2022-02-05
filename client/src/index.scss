@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500&family=Lato:wght@400;700&display=swap');
 
 
 //primary-colors
 $violet: #7E33E0;
 $purple: #FB2E86;
+$borderColor: #e7e6ef;
+$greyText: #9096B2;
+$bgColor:#EEEFFB;
 
 *{
   padding:0;
@@ -21,6 +24,11 @@ body {
   font-family: 'Josefin Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.container{
+  margin: 0 auto;
+  width: 100%;
 }
 
 code {
