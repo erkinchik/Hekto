@@ -13,7 +13,6 @@ const Auth: FC<AuthProps> = ({data}) => {
   const { pathname } = useLocation();
 
 
-console.log(data)
   return (
     <div className="login-form">
         <div className="login-text">

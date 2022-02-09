@@ -1,10 +1,15 @@
-import React, {FC} from "react";
-import { Switch, Redirect, Route} from "react-router-dom";
+import React, {FC,useEffect} from "react";
+import { Switch, Redirect, Route,useHistory} from "react-router-dom";
 
 import { routes } from "../../routes/routes";
 import {HOME_ROUTE, NOT_FOUND} from "../../utils/paths";
 
 const AppRouter: FC = () => {
+    const history = useHistory()
+
+    // useEffect(()=>{
+    //     history.push(HOME_ROUTE)
+    // })
 
   return (
     <Switch>

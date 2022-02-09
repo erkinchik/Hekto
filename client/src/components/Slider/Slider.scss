@@ -1,0 +1,31 @@
+@import "src/index";
+.slick-dots {
+  .slick-active div {
+    background-color: $purple;
+  }
+}
+.slide__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slick-slider {
+  //width: 100vw;
+  height: 100%;
+}
+
+.slick-slide div {
+  max-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-position: center;
+}
+.slick-slide img {
+  max-width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.SliderBlock {
+}

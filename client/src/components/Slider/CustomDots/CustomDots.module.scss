@@ -1,0 +1,9 @@
+@import "src/index";
+
+
+.dot{
+  height: 10px;
+  width: 10px;
+  border: 2px solid $purple;
+  transform: rotate(45deg);
+}

@@ -1,7 +1,7 @@
 import {BASKET_ROUTE, HOME_ROUTE, LOGIN_ROUTE, NOT_FOUND, REGISTRATION_ROUTE} from '../utils/paths'
 // import {} from '../components/index'
-import HomePage from '../pages/HomePage'
-import LoginPage from "../pages/LoginPage";
+import HomePage from '../pages/HomePage/HomePage'
+import LoginPage from "../pages/LoginPage/LoginPage";
 import Page404 from "../pages/page404/page404";
 
 export const routes = [
