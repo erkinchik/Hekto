@@ -1,37 +1,26 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect } from "react";
 
-import { Api } from "../../API/api";
-import { IDevice } from "../../types";
-import { MySlider } from "../../components/index";
+import "./HomePage.scss";
+import { MySlider, ProductList, ItemsList } from "../../components/index";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { fetchProducts } from "../../store/action-creators/productsAction";
+import { fetchCategories} from "../../store/action-creators/categoryAction";
+import { useDispatch } from "react-redux";
 
 const HomePage: FC = () => {
-  let [devices, setDevices] = useState<IDevice[]>([
-    {
-      brand_id: 2,
-      id: 12,
-      img: "917f811f-9fd4-4cda-b116-698b90bcbd82.jpg",
-      name: "iphone 11 pro ",
-      price: 62000,
-      type_id: 5,
-    },
-    {
-      brand_id: 2,
-      id: 13,
-      img: "917f811f-9fd4-4cda-b116-698b90bcbd82.jpg",
-      name: "iphone 11 pro ",
-      price: 62000,
-      type_id: 5,
-    },
-  ]);
+  const dispatch = useDispatch();
+
+  // const { products, loading, error } = useTypedSelector(
+  //   (state) => state.products
+  // );
+    const { categories, loading, error } = useTypedSelector(
+        (state) => state.categories
+    );
 
   useEffect(() => {
-    // async function fetch() {
-    //   const device = await Api.getProducts();
-    //   console.log(device);
-    //   setDevices(device!);
-    //   console.log(devices, "dddd");
-    // }
-    // fetch();
+    dispatch(fetchProducts());
+    dispatch(fetchCategories());
+    // dispatch(fe)
   }, []);
 
   return (
@@ -39,7 +28,14 @@ const HomePage: FC = () => {
       <section className="slider">
         <MySlider />
       </section>
-      <div className="section2">fjwfwejfkwf fewfewefwef fewwefwef</div>
+      <section className="section2">
+        {/*<ProductList />*/}
+        <ItemsList list={categories} loading={loading} error={error} />
+      </section>
+        <section className="section2">
+            {/*<ProductList />*/}
+            {/*<ItemsList list={products} loading={loading} error={error} />*/}
+        </section>
     </div>
   );
 };

@@ -18,15 +18,15 @@ const HeaderBar:FC = () => {
                 <span className="phone">{data.number}</span>
             </div>
             <div className="buttons">
-                <select className="buttons__currncy">
+                <select className="buttons__currency">
                     {data.currency.map((c) => (
                         <option value={c} key={c}>
                             {c}
                         </option>
                     ))}
                 </select>
-                <Link className="buttons__login" to={LOGIN_ROUTE}>login</Link>
-                <Link className="buttons__basket" to={BASKET_ROUTE}>basket</Link>
+                <Link className="buttons__login" to={LOGIN_ROUTE}>Login</Link>
+                <Link className="buttons__basket" to={BASKET_ROUTE}></Link>
             </div>
         </div>
     );

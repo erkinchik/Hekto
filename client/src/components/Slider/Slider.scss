@@ -1,31 +1,35 @@
-@import "src/index";
-.slick-dots {
-  .slick-active div {
-    background-color: $purple;
-  }
-}
-.slide__wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.slick-slider {
-  //width: 100vw;
-  height: 100%;
-}
+@import "../../styles/variables";
 
-.slick-slide div {
-  max-height: 100vh;
+
+.swiper-container{
+  width: 100%;
+}
+.swiper__image{
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-position: center;
 }
-.slick-slide img {
+.swiper__image img{
   max-width: 100%;
   background-repeat: no-repeat;
+  background-size: cover;
   background-position: center;
 }
+/* target the active bullet */
+span.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: $purple;
+  opacity: 1;
+}
 
-.SliderBlock {
+/* target all bullets */
+span.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  margin-left: 10px !important;
+  border: 2px solid $purple;
+  border-radius: 0;
+  transform: rotate(45deg);
+  opacity: 1;
+  background: none;
 }

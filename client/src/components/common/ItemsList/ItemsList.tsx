@@ -1,0 +1,32 @@
+import React, { FC } from "react";
+import CategoryCard from "../CategoryCard/CategoryCard";
+import ProductCard from "../PorductCard/ProductCard";
+
+interface ItemsListProps {
+  list: any[];
+  loading: boolean;
+  error: string | null | object;
+}
+
+const ItemsList: FC<ItemsListProps> = ({ list, loading, error }) => {
+  if (loading) {
+    return <h1>loading...</h1>;
+  }
+  if (error) {
+    return <h1>{error}</h1>;
+  }
+
+  return (
+    <div className="items-list">
+      {list.map((item) => {
+        return item.hasOwnProperty("category_id") ? (
+          <ProductCard key={item.id} product={item} />
+        ) : (
+          <CategoryCard key={item.id} category={item}/>
+        );
+      })}
+    </div>
+  );
+};
+
+export default ItemsList;

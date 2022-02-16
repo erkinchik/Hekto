@@ -16,7 +16,7 @@ const AppRouter: FC = () => {
       {routes.map(({ path, Component }) => (
         <Route key={path} path={path} component={Component} exact={true} />
       ))}
-      <Redirect to={NOT_FOUND} />
+      <Redirect to={HOME_ROUTE} />
     </Switch>
   );
 };

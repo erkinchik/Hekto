@@ -1,4 +1,4 @@
-@import "src/index";
+@import "../../styles/variables";
 
 .header {
   display: flex;
@@ -23,35 +23,7 @@
   display: flex;
   align-items: center;
 
-  & li {
-    display: flex;
-    align-items: center;
-    margin-left: 35px;
-    cursor: pointer;
-    transition: color 0.2s linear;
-  }
-  & li:hover {
-    color: $purple;
-  }
-  & li:first-child {
-    margin-left: 0;
-  }
-  & li:hover::after {
-    opacity: 1;
-  }
-  & li::after {
-    content: "";
-    margin-left: 5px;
-    display: inline-block;
-    opacity: 0;
-    width: 15px;
-    height: 15px;
-    background-image: url("../../assets/arrow-down.svg");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    transition: opacity 0.2s linear;
-  }
+
 }
 
 .search {

@@ -1,5 +1,4 @@
-@import "./src/index";
-
+@import "../../styles/variables";
 
 .top-bar {
   width: 100%;
@@ -16,5 +15,47 @@
     .email {
       margin: 0 20px 0 0;
     }
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+  &__login {
+    color: white;
+  }
+  &__currency {
+    font-family: inherit;
+    cursor: pointer;
+    color: white;
+    background: none;
+    border: none;
+    outline: none;
+
+    option {
+      background-color: #7e33e0;
+      outline: none;
+      border: none;
+    }
+  }
+  &__basket::after {
+    content: "";
+    display: block;
+    width: 1.4em;
+    height: 1.4em;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../../assets/basket.svg");
+  }
+  &__login::after {
+    content: "";
+    margin-left: 3px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../../assets/userIcon.svg");
   }
 }

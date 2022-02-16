@@ -8,15 +8,17 @@ export interface IDataBody {
   linkTo: string;
 }
 
-export interface IDevice {
+export interface IProduct {
   id: number;
   brand_id: number;
   img: string;
   name: string;
   price: number;
-  type_id: number;
+  category_id: number;
+  in_stock: number;
+  sale: boolean;
 }
-export interface IDevices {
+export interface IProducts {
   count: number;
-  rows: IDevice[];
+  rows: IProduct[];
 }

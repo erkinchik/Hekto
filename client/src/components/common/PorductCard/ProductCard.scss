@@ -1,0 +1,78 @@
+@import "src/styles/variables";
+
+.card-body {
+  position: relative;
+  cursor: pointer;
+  width: 250px;
+  height: 350px;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+  color: $cardTextColor;
+  &:hover {
+    .card-image {
+      background-color: #ebf4f3;
+    }
+    .card-buttons {
+      opacity: 1;
+      z-index: 1;
+    }
+  }
+}
+.card-sale {
+  position: absolute;
+  top: 0;
+  left: 5px;
+}
+.card-image {
+  overflow: hidden;
+  background-color: #f6f7fb;
+  height: 72%;
+  padding: 18%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+  & img {
+    width: 100%;
+  }
+}
+.card-text {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  &__price {
+    color: $cardTextColor;
+    margin: 10px 0 0 0;
+  }
+}
+
+.card-buttons {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 20px;
+  bottom: calc(50% - 65px);
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.6s ease-in-out;
+  & button:first-child {
+    margin-bottom: 5px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  & button {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background: none;
+    outline: none;
+    border: none;
+    svg * {
+      fill: $cardTextColor;
+    }
+  }
+}

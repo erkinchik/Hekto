@@ -1,8 +1,9 @@
 import React, { FC, useState } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import "./header.scss";
 import HeaderBar from "../HeaderBar/HeaderBar";
+import DropItem from "../common/DropList/DropItem";
 import { HOME_ROUTE } from "../../utils/paths";
 
 const Header: FC = () => {
@@ -17,7 +18,7 @@ const Header: FC = () => {
         </Link>
         <ul className="header-inner__navBar">
           {navItems.map((i) => (
-            <li key={i}>{i}</li>
+            <DropItem key={i}>{i}</DropItem>
           ))}
         </ul>
         <div className="search">
