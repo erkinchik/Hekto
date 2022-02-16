@@ -1,30 +1,36 @@
-const deviceService = require("../services/productService");
+const productService = require("../services/productService");
 
-class DeviceController {
+class ProductController {
   async create(req, res, next) {
     try {
-      let { name, price, brandId, typeId, info } = req.body;
+      let { name, price, brandId, categoryId, inStock, info,sale } = req.body;
       const { img } = req.files;
-      const device = await deviceService.createDevice(
+      const product = await productService.createProduct(
         name,
         price,
         brandId,
-        typeId,
+        categoryId,
         img,
-        info
+        info,
+        inStock,sale
       );
 
-      res.json(device);
+      res.json(product);
     } catch (e) {
       next(e);
     }
   }
   async get(req, res, next) {
     try {
-      const { brandId, typeId, limit, page } = req.query;
-      const devices = await deviceService.getAll(brandId, typeId, limit, page);
+      const { brandId, categoryId, limit, page } = req.query;
+      const products = await productService.getAll(
+        brandId,
+        categoryId,
+        limit,
+        page
+      );
 
-      res.json(devices);
+      res.json(products);
     } catch (e) {
       next(e);
     }
@@ -32,16 +38,16 @@ class DeviceController {
   async getOne(req, res, next) {
     try {
       const { id } = req.params;
-      const deviceById = await deviceService.getById(id);
-      res.json(deviceById);
+      const productById = await productService.getById(id);
+      res.json(productById);
     } catch (e) {
       next(e);
     }
   }
   async update(req, res) {}
   async delete(req, res) {
-    res.json(await deviceService.delete(req.params.id));
+    res.json(await productService.delete(req.params.id));
   }
 }
 
-module.exports = new DeviceController();
+module.exports = new ProductController();

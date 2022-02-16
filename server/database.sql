@@ -19,15 +19,18 @@
 --   FOREIGN KEY (device_id) REFERENCES device (id)
 --);
 --
---create TABLE device(
+-- create TABLE product(
 --   id SERIAL PRIMARY KEY,
 --   name VARCHAR(255),
 --   price VARCHAR(255),
---   type_id INTEGER,
---   FOREIGN KEY (type_id) REFERENCES type (id),
+--   in_stock: INTEGER DEFAULT 0,
+--   img: VARCHAR (255),
+--   sale: BOOLEAN DEFAULT false,
+--   category_id INTEGER,
+--   FOREIGN KEY (category_id) REFERENCES type (id),
 --   brand_id INTEGER,
 --   FOREIGN KEY (brand_id) REFERENCES brand (id)
---);
+-- );
 --create TABLE type(
 --   id SERIAL PRIMARY KEY,
 --   name VARCHAR(50)

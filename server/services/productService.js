@@ -2,54 +2,92 @@ const db = require("../db");
 const uuid = require("uuid");
 const path = require("path");
 
-class DeviceService {
-  async createDevice(name, price, brandId, typeId, img,info) {
+class ProductService {
+  async createProduct(
+    name,
+    price,
+    brandId,
+    categoryId,
+    img,
+    info,
+    inStock,
+    sale
+  ) {
     let fileName = uuid.v4() + ".jpg";
     img.mv(path.resolve(__dirname, "..", "static", fileName));
 
-    const newDevice = await db.query('INSERT INTO device (name,price,brand_id,type_id,img) VALUES ($1,$2,$3,$4,$5) RETURNING *',[name, price, brandId, typeId,fileName]);
-    if(info) {
-      info = JSON.parse(info)
-        info.forEach(i =>{
-            return db.query('INSERT INTO device_info (title,description,device_id) VALUES ($1,$2,$3)', [i.title,i.description, newDevice.rows[0].id])
-        })
+    const newProduct = await db.query(
+      "INSERT INTO product (name,price,brand_id,category_id,img,in_stock,sale) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *",
+      [name, price, brandId, categoryId, fileName, inStock, sale]
+    );
+
+    if (info) {
+      info = JSON.parse(info);
+      info.forEach((i) => {
+        return db.query(
+          "INSERT INTO product_info (title,description,product_id) VALUES ($1,$2,$3)",
+          [i.title, i.description, newProduct.rows[0].id]
+        );
+      });
     }
 
-    return newDevice.rows[0];
+    return newProduct.rows[0];
   }
 
-  async getAll(brandId, typeId,limit = 10,page = 1) {
-    let offset = page * limit - limit
+  async getAll(brandId, categoryId, limit = 10, page = 1) {
+    let offset = page * limit - limit;
 
-    let allDevices;
-    if(brandId && typeId || limit || offset){
-      allDevices = await db.query('SELECT * FROM device where brand_id = $1 and type_id = $2 LIMIT $3 OFFSET $4',[brandId,typeId,limit,offset]);
-    }
-    if(!brandId && typeId || limit || offset){
-      allDevices = await db.query('SELECT * FROM device where type_id = $1 LIMIT $2 OFFSET $3',[typeId,limit,offset]);
-    }
-    if(brandId && !typeId || limit || offset){
+    let allProducts;
 
-      allDevices = await db.query('SELECT * FROM device where brand_id = $1 LIMIT $2 OFFSET $3',[brandId,limit,offset]);
+    if (brandId && categoryId) {
+      allProducts = await db.query(
+        "SELECT * FROM product where brand_id = $1 and category_id = $2 ORDER BY id LIMIT $3 OFFSET $4",
+        [brandId, categoryId, limit, offset]
+      );
     }
-    if(!brandId && !typeId || limit || offset){
-      allDevices = await db.query('SELECT * FROM device LIMIT $1 OFFSET $2',[limit,offset]);
+    if (!brandId && categoryId) {
+      allProducts = await db.query(
+        "SELECT * FROM product where category_id = $1 ORDER BY id LIMIT $2 OFFSET $3 ",
+        [categoryId, limit, offset]
+      );
     }
-    return {count:allDevices.rows.length, rows:[...allDevices.rows]};
+    if (brandId && !categoryId) {
+      allProducts = await db.query(
+        "SELECT * FROM product where brand_id = $1 ORDER BY id LIMIT $2 OFFSET $3 ",
+        [brandId, limit, offset]
+      );
+    }
+    if (!brandId && !categoryId) {
+      allProducts = await db.query(
+        "SELECT * FROM product ORDER BY id LIMIT $1 OFFSET $2 ",
+        [limit, offset]
+      );
+    }
+
+    return { count: allProducts.rows.length, rows: [...allProducts.rows] };
   }
 
   async getById(id) {
-    const {rows:device} = await db.query('SELECT * FROM device where id = $1',[id])
-    const {rows:deviceInfo} = await db.query('SELECT * FROM device_info WHERE device_id=$1',[id])
+    const { rows: product } = await db.query(
+      "SELECT * FROM product where id = $1",
+      [id]
+    );
+    const { rows: productInfo } = await db.query(
+      "SELECT * FROM product_info WHERE product_id=$1",
+      [id]
+    );
 
-    return device.length ? {...device[0],deviceInfo} : []
+    return product.length ? { ...product[0], productInfo } : [];
   }
 
-  async delete(id){
-    await db.query('DELETE FROM device_info WHERE device_id IN (SELECT id FROM device WHERE id = $1)',[id])
-    const device = await db.query('DELETE FROM device where id = $1',[id])
-    return !device.rows.length
+  async delete(id) {
+    await db.query(
+      "DELETE FROM product_info WHERE product_id IN (SELECT id FROM product WHERE id = $1)",
+      [id]
+    );
+    const product = await db.query("DELETE FROM product where id = $1", [id]);
+    return !product.rows.length;
   }
 }
 
-module.exports = new DeviceService();
+module.exports = new ProductService();
