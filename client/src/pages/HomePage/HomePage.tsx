@@ -23,17 +23,17 @@ const HomePage: FC = () => {
   }, []);
 
   return (
-    <div className="wrapper">
-      <section className="slider">
+    <div className="home-page">
+      <section className="home-page__slider">
         <MySlider />
       </section>
-      <section className="section2">
+      <section className="home-page__products">
         {/*<ProductList />*/}
         <ProductSort results={products.count} />
         {/*<ItemsList list={categories} loading={loading} error={error} />*/}
         <ItemsList list={products.rows} loading={loading} error={error} />
       </section>
-      <section className="section2">{/*<ProductList />*/}</section>
+      {/*<section className="section2">/!*<ProductList />*!/</section>*/}
     </div>
   );
 };
