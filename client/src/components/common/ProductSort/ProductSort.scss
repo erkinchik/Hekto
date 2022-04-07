@@ -1,0 +1,33 @@
+@import "src/styles/variables";
+
+.sort-item-block {
+  padding: 0 calc(50% - 580px);
+  display: flex;
+  align-items: center;
+  color: $cardTextColor;
+  .sort-text {
+    margin: 0 auto 0 5%;
+  }
+}
+.selects-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 5% 0 0;
+
+  .sort-by-block {
+    margin: 0 10px 0;
+  }
+  .view-block {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    button {
+      background: none;
+      outline: none;
+      border: none;
+      cursor: pointer;
+
+    }
+  }
+}

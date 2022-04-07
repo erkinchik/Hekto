@@ -16,7 +16,6 @@ const MySlider = () => {
   return (
     <Swiper
       modules={[Pagination, Mousewheel, Autoplay]}
-      mousewheel
       speed={800}
       spaceBetween={0}
       loop={true}

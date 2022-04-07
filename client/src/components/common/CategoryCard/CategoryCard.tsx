@@ -1,10 +1,10 @@
 import React, { FC } from "react";
 
 import './CategoryCard.scss'
-import { ICategories } from "../../../types/categoryTypes";
+import { ICategory } from "../../../types/categoryTypes";
 import camera from "../../../assets/cam.png";
 interface CategoryCardProps {
-  category: ICategories;
+  category: ICategory;
 }
 
 const CategoryCard: FC<CategoryCardProps> = ({ category }) => {

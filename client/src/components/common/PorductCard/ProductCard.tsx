@@ -8,6 +8,8 @@ import { ReactComponent as LoopIcon } from "../../../assets/loop.svg";
 import { ReactComponent as WishIcon } from "../../../assets/wish.svg";
 import { ReactComponent as SaleIcon } from "../../../assets/saleIcon.svg";
 
+import {Link} from "react-router-dom";
+
 interface ProductCardProps {
   product: IProduct;
 }
@@ -15,7 +17,7 @@ interface ProductCardProps {
 const ProductCard: FC<ProductCardProps> = ({ product }) => {
 
   return (
-    <div className="card-body">
+    <Link  className="card-body" to={ `/product/${product.id}` }>
       {product.sale && (
         <div className="card-sale">
           <SaleIcon />
@@ -45,7 +47,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
           <WishIcon />
         </button>
       </div>
-    </div>
+    </Link>
   );
 };
 

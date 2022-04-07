@@ -1,4 +1,4 @@
-import {ICategories} from "../categoryTypes";
+import {ICategory} from "../categoryTypes";
 
 
 export enum CategoryActionTypes {
@@ -8,7 +8,7 @@ export enum CategoryActionTypes {
 }
 
 export interface CategoryState {
-     categories:ICategories[]  ,
+     categories:ICategory[]  ,
      loading: boolean,
      error: null | string | object,
 }

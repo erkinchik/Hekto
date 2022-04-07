@@ -1,4 +1,5 @@
 import { LOGIN_ROUTE } from "../utils/paths";
+import { ICategory } from "./categoryTypes";
 
 export interface IDataBody {
   title: string;
@@ -22,3 +23,10 @@ export interface IProducts {
   count: number;
   rows: IProduct[];
 }
+
+export interface ICategories {
+  count: number;
+  rows: ICategory[];
+}
+
+export type CommonProps = ICategories | IProducts;

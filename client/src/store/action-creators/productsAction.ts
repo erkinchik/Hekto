@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 import {
   ProductsAction,
   ProductsActionTypes,
@@ -18,7 +17,7 @@ export const fetchProducts = () => {
       console.log(data);
       dispatch({
         type: ProductsActionTypes.FETCH_PRODUCTS_SUCCESS,
-        payload: data.rows,
+        payload: data,
       });
     } catch (e) {
       const msg = (e as Error).message;

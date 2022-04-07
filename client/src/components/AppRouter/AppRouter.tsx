@@ -5,12 +5,6 @@ import { routes } from "../../routes/routes";
 import {HOME_ROUTE, NOT_FOUND} from "../../utils/paths";
 
 const AppRouter: FC = () => {
-    const history = useHistory()
-
-    // useEffect(()=>{
-    //     history.push(HOME_ROUTE)
-    // })
-
   return (
     <Switch>
       {routes.map(({ path, Component }) => (
