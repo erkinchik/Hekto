@@ -7,6 +7,7 @@ import ProductList from "./ProductList/ProductList";
 import ItemsList from "./common/ItemsList/ItemsList";
 import Footer from "./Footer/Footer";
 import ProductDetailsCard from "./ProductDetailsCard/ProductDetailsCard";
+import CartProductCard from "./CartProductCard/CartProductCard";
 export {
   Auth,
   AppRouter,
@@ -17,4 +18,5 @@ export {
   ItemsList,
   Footer,
   ProductDetailsCard,
+  CartProductCard,
 };

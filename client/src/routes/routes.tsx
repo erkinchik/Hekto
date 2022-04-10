@@ -6,11 +6,11 @@ import {
   REGISTRATION_ROUTE,
   PRODUCT_DETAILS,
 } from "../utils/paths";
-// import {} from '../components/index'
 import HomePage from "../pages/HomePage/HomePage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import Page404 from "../pages/page404/page404";
 import ProductDetailsPage from "../pages/ProductDetailsPage/ProductDetailsPage";
+import CartPage from "../pages/CartPage/CartPage";
 
 export const routes = [
   {
@@ -27,7 +27,7 @@ export const routes = [
   },
   {
     path: BASKET_ROUTE,
-    Component: HomePage,
+    Component: CartPage,
   },
   {
     path: NOT_FOUND,

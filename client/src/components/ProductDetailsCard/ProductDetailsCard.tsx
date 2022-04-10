@@ -1,11 +1,14 @@
-import React from "react";
+import React, { FC } from "react";
 import back from "../../assets/back.png";
 
-import './ProductDetailsCard.scss'
+import "./ProductDetailsCard.scss";
+import { IProduct } from "../../types/productTypes";
 
-const ProductDetailsCard = () => {
+
+const ProductDetailsCard: FC = () => {
+
   return (
-    <div className="products-details">
+    <div className="products-details ">
       <div className="product-details__card">
         <div className="product-details__photos-wrapper">
           <div className="product-details__photos">
