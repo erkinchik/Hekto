@@ -20,9 +20,13 @@ const ItemsList: FC<ItemsListProps> = ({ list, loading, error }) => {
     <div className="items-list">
       {list.map((item) => {
         return item.hasOwnProperty("category_id") ? (
-          <ProductCard key={item.id} product={item} />
+          <ProductCard
+            key={item.id}
+            product={item}
+            onClick={(id) => console.log(id)}
+          />
         ) : (
-          <CategoryCard key={item.id} category={item}/>
+          <CategoryCard key={item.id} category={item} />
         );
       })}
     </div>
