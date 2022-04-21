@@ -34,7 +34,7 @@ class ProductService {
     return newProduct.rows[0];
   }
 
-  async getAll(brandId, categoryId, limit = 10, page = 1) {
+  async getAll(brandId, categoryId, limit = 20, page = 1) {
     let offset = page * limit - limit;
 
     let allProducts;

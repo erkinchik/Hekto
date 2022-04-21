@@ -1,10 +1,10 @@
 const Router = require("express");
 const router = new Router();
-const deviceController = require("../controllers/productController");
+const productController = require("../controllers/productController");
 
-router.get("/", deviceController.get);
-router.post("/", deviceController.create);
-router.get("/:id", deviceController.getOne);
-router.delete("/:id", deviceController.delete);
+router.get("/", productController.get);
+router.post("/", productController.create);
+router.get("/:id", productController.getOne);
+router.delete("/:id", productController.delete);
 
 module.exports = router;

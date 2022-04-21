@@ -3,8 +3,9 @@ const productService = require("../services/productService");
 class ProductController {
   async create(req, res, next) {
     try {
-      let { name, price, brandId, categoryId, inStock, info,sale } = req.body;
+      let { name, price, brandId, categoryId, inStock, info, sale } = req.body;
       const { img } = req.files;
+
       const product = await productService.createProduct(
         name,
         price,
@@ -12,9 +13,9 @@ class ProductController {
         categoryId,
         img,
         info,
-        inStock,sale
+        inStock,
+        sale
       );
-
       res.json(product);
     } catch (e) {
       next(e);
