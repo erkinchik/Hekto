@@ -1,6 +1,6 @@
 import React from "react";
 
-import { AppRouter, Header, Auth, Footer } from "./components/index";
+import { AppRouter, Header, Footer } from "./components/index";
 
 const App = () => {
   return (
