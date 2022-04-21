@@ -1,12 +1,10 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import back from "../../assets/back.png";
 
 import "./ProductDetailsCard.scss";
 import { IProduct } from "../../types/productTypes";
 
-
 const ProductDetailsCard: FC = () => {
-
   return (
     <div className="products-details ">
       <div className="product-details__card">
