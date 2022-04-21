@@ -2,7 +2,7 @@ import React, {FC,useEffect} from "react";
 import { Switch, Redirect, Route,useHistory} from "react-router-dom";
 
 import { routes } from "../../routes/routes";
-import {HOME_ROUTE, NOT_FOUND} from "../../utils/paths";
+import {HOME_ROUTE} from "../../utils/paths";
 
 const AppRouter: FC = () => {
   return (
