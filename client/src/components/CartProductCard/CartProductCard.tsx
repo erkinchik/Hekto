@@ -13,7 +13,10 @@ const CartProductCard: FC = () => {
         </div>
         <div className="product-cart__text">
           <h4 className="product-cart__title">Ut diam consequat</h4>
-          <p className="product-cart__description">color: brown</p>
+          <ul className="product-cart__params">
+              <li className="product-cart__params-item">color: black</li>
+              <li className="product-cart__params-item">size: XL</li>
+          </ul>
         </div>
       </div>
 

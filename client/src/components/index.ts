@@ -8,6 +8,7 @@ import ItemsList from "./common/ItemsList/ItemsList";
 import Footer from "./Footer/Footer";
 import ProductDetailsCard from "./ProductDetailsCard/ProductDetailsCard";
 import CartProductCard from "./CartProductCard/CartProductCard";
+import Spinner from "./common/Spinner/Spinner";
 export {
   Auth,
   AppRouter,
@@ -19,4 +20,5 @@ export {
   Footer,
   ProductDetailsCard,
   CartProductCard,
+  Spinner,
 };

@@ -21,8 +21,14 @@
 .buttons {
   display: flex;
   gap: 20px;
-  &__login {
+  &__login,
+  &__logout {
+    font: inherit;
     color: white;
+    cursor: pointer;
+    background: none;
+    outline: none;
+    border: none;
   }
   &__currency {
     font-family: inherit;

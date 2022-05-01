@@ -1,13 +1,20 @@
 import React from "react";
-import { useLocation } from "react-router";
+import { useHistory, useLocation } from "react-router";
 
 import Auth from "../../components/Auth/Auth";
 import { loginBody, registrationBody } from "../../helpers/authHelper";
 import { LOGIN_ROUTE } from "../../utils/paths";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { Spinner } from "../../components";
 
 const LoginPage = () => {
   const { pathname } = useLocation();
+  const history = useHistory();
+  const { token, loading, error } = useTypedSelector((state) => state.auth);
 
+  if (token) {
+    history.push("/home");
+  }
   return (
     <div
       className="login-section wrapper"
@@ -21,6 +28,7 @@ const LoginPage = () => {
     >
       <Auth
         data={pathname == LOGIN_ROUTE ? loginBody : registrationBody}
+        errorMessage={error}
       ></Auth>
     </div>
   );

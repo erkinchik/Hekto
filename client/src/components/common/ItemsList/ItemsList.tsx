@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import CategoryCard from "../CategoryCard/CategoryCard";
 import ProductCard from "../PorductCard/ProductCard";
+import Spinner from "../Spinner/Spinner";
 
 interface ItemsListProps {
   list: any[];
@@ -10,7 +11,7 @@ interface ItemsListProps {
 
 const ItemsList: FC<ItemsListProps> = ({ list, loading, error }) => {
   if (loading) {
-    return <h1>loading...</h1>;
+    return <Spinner/>;
   }
   if (error) {
     return <h1>{error}</h1>;

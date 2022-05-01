@@ -5,9 +5,11 @@ import "./header.scss";
 import HeaderBar from "../HeaderBar/HeaderBar";
 import DropItem from "../common/DropList/DropItem";
 import { HOME_ROUTE } from "../../utils/paths";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 const Header: FC = () => {
   const navItems = ["Home", "Pages", "Products", "Contacts"];
+
 
   return (
     <header className="header">
