@@ -27,10 +27,10 @@ class UserController {
         const {email,password} = req.body
         const user = await UserService.findOne(email)
         if(!user){
-            return next(ApiError.badRequest('Пользавателя с таким email\'om нет '))
+            return next(ApiError.badRequest('Incorrect email or password'))
         }
         let comparePassword = bcrypt.compareSync(password,user.password)
-        if(!comparePassword) return next(ApiError.badRequest('Неверный пароль'))
+        if(!comparePassword) return next(ApiError.badRequest('Incorrect Password'))
 
         const token = generateJwt(user.id,user.email,user.role)
 
