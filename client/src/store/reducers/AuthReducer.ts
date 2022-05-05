@@ -5,7 +5,7 @@ import {
 } from "../../types/storeTypes/userTypes";
 
 const initialState: AuthState = {
-  token: "" || localStorage.getItem("token"),
+  token: null || localStorage.getItem("token"),
   loading: false,
   error: null,
 };

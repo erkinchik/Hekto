@@ -24,7 +24,7 @@ const Auth: FC<AuthProps> = ({ data, errorMessage }) => {
     setUserState({ ...userState, [e.target.name]: e.target.value });
   };
   const auth = () => {
-    dispatch(authFetch(userState));
+    dispatch(authFetch({ ...userState, email: userState.email.trim() }));
   };
 
   return (

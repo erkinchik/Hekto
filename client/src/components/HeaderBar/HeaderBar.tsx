@@ -16,7 +16,6 @@ const HeaderBar: FC = () => {
     currency: ["USD", "KGZ", "RUB"],
   };
   const { token } = useTypedSelector((state) => state.auth);
-
   return (
     <div className="top-bar">
       <div className="info">

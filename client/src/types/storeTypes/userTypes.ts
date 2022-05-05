@@ -7,9 +7,16 @@ export enum AuthActionTypes {
   AUTH_ERROR = "AUTH_ERROR",
   AUTH_LOGOUT = "AUTH_LOGOUT",
 }
-
-export interface AuthState {
+interface IUser {
+  email: string;
+  exp: number | symbol | bigint;
+  iat: number | symbol | bigint;
+  id: number | symbol;
+  role: string;
   token: string | null;
+}
+export interface AuthState {
+  token: null | string;
   loading: boolean;
   error: null | string | object;
 }
@@ -28,4 +35,8 @@ interface AuthAction {
 interface AuthLogoutAction {
   type: AuthActionTypes.AUTH_LOGOUT;
 }
-export type UserActions = AuthAction | AuthErrorAction | AuthSuccessAction | AuthLogoutAction;
+export type UserActions =
+  | AuthAction
+  | AuthErrorAction
+  | AuthSuccessAction
+  | AuthLogoutAction;

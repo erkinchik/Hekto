@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory, useLocation } from "react-router";
 
 import Auth from "../../components/Auth/Auth";
@@ -12,9 +12,12 @@ const LoginPage = () => {
   const history = useHistory();
   const { token, loading, error } = useTypedSelector((state) => state.auth);
 
-  if (token) {
-    history.push("/home");
-  }
+  useEffect(() => {
+    if (token) {
+      history.push("/home");
+    }
+  });
+
   return (
     <div
       className="login-section wrapper"
