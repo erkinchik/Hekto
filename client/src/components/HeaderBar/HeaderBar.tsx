@@ -15,7 +15,7 @@ const HeaderBar: FC = () => {
     number: "+996777664690",
     currency: ["USD", "KGZ", "RUB"],
   };
-  const { token } = useTypedSelector((state) => state.auth);
+  const { user } = useTypedSelector((state) => state.auth);
   return (
     <div className="top-bar">
       <div className="info">
@@ -30,7 +30,7 @@ const HeaderBar: FC = () => {
             </option>
           ))}
         </select>
-        {token ? (
+        {user ? (
           <button
             className="buttons__logout"
             onClick={() => dispatch(logOut())}

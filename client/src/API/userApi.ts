@@ -1,18 +1,22 @@
-import { $host } from "../utils/host";
+import { $authHost, $host } from "../utils/host";
 import { IToken, IUserTypes } from "../types/userTypes";
 import jwtDecode from "jwt-decode";
 import { json } from "stream/consumers";
 
 export const login = async (userData: IUserTypes) => {
-  const { data } = await $host.post(`/user/login`, userData);
-  const user = { ...(jwtDecode(data.token) as object), token: data.token };
-  console.log(user);
-  localStorage.setItem("token", data.token);
-  return data;
+  const { data } = await $host.post<IToken>(`/user/login`, userData);
+  const user = {
+    ...(jwtDecode(data.token) as object),
+    token: data.token,
+  };
+  localStorage.setItem("user", JSON.stringify(user));
+  return user;
 };
 
 export const check = async () => {
-  const { data } = await $host.get("/user/auth");
-  const user = JSON.parse(JSON.stringify(localStorage.getItem("user")));
-  // localStorage.setItem("user", JSON.stringify({...user,token: data.token} );
+  const { data } = await $authHost.get("/user/auth");
+  //@ts-ignore
+  const user = JSON.parse(localStorage.getItem("user"));
+  localStorage.setItem("user", JSON.stringify({ ...user, token: data.token }));
+  return jwtDecode(data.token);
 };

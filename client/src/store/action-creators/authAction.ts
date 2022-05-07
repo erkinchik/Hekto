@@ -1,6 +1,10 @@
 import { Dispatch } from "redux";
-import { UserActions, AuthActionTypes } from "../../types/storeTypes/userTypes";
-import { IToken, IUserTypes } from "../../types/userTypes";
+import {
+  AuthActionTypes,
+  IUser,
+  UserActions,
+} from "../../types/storeTypes/userTypes";
+import { IUserTypes } from "../../types/userTypes";
 import { login } from "../../API/userApi";
 
 export const authFetch = (userData: IUserTypes) => {
@@ -14,18 +18,21 @@ export const authFetch = (userData: IUserTypes) => {
     }
     try {
       dispatch({ type: AuthActionTypes.AUTH });
-      const data = await login(userData).catch((e) =>
-        dispatch({
-          type: AuthActionTypes.AUTH_ERROR,
-          payload: e.response.data.message,
+
+      await login(userData)
+        .then((data) => {
+          console.log(data);
+          dispatch({
+            type: AuthActionTypes.AUTH_SUCCESS,
+            payload: data as IUser,
+          });
         })
-      );
-      if (data?.token) {
-        dispatch({
-          type: AuthActionTypes.AUTH_SUCCESS,
-          payload: data,
-        });
-      }
+        .catch((e) =>
+          dispatch({
+            type: AuthActionTypes.AUTH_ERROR,
+            payload: e.response.data.message,
+          })
+        );
     } catch (e) {
       const msg = e as Error;
       dispatch({
@@ -41,6 +48,6 @@ export const logOut = () => {
     dispatch({
       type: AuthActionTypes.AUTH_LOGOUT,
     });
-    localStorage.removeItem("token");
+    localStorage.removeItem("user");
   };
 };

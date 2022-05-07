@@ -10,10 +10,10 @@ import { Spinner } from "../../components";
 const LoginPage = () => {
   const { pathname } = useLocation();
   const history = useHistory();
-  const { token, loading, error } = useTypedSelector((state) => state.auth);
+  const { user, loading, error } = useTypedSelector((state) => state.auth);
 
   useEffect(() => {
-    if (token) {
+    if (user) {
       history.push("/home");
     }
   });

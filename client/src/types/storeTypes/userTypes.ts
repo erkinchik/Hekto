@@ -7,22 +7,22 @@ export enum AuthActionTypes {
   AUTH_ERROR = "AUTH_ERROR",
   AUTH_LOGOUT = "AUTH_LOGOUT",
 }
-interface IUser {
+export interface IUser {
   email: string;
   exp: number | symbol | bigint;
   iat: number | symbol | bigint;
   id: number | symbol;
   role: string;
-  token: string | null;
+  token: string | null | symbol;
 }
 export interface AuthState {
-  token: null | string;
+  user: IUser | null | string;
   loading: boolean;
   error: null | string | object;
 }
 interface AuthSuccessAction {
   type: AuthActionTypes.AUTH_SUCCESS;
-  payload: string;
+  payload: IUser | null;
 }
 
 interface AuthErrorAction {
