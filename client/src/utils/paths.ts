@@ -1,6 +1,6 @@
-export const LOGIN_ROUTE = '/login'
-export const REGISTRATION_ROUTE = '/registration'
-export const BASKET_ROUTE = '/basket'
-export const HOME_ROUTE = '/home'
-export const NOT_FOUND = '/404'
-export const PRODUCT_DETAILS = '/product/:id'
+export const LOGIN_ROUTE = "/login";
+export const REGISTRATION_ROUTE = "/registration";
+export const BASKET_ROUTE = "/basket";
+export const HOME_ROUTE = "/home";
+export const NOT_FOUND = "/404";
+export const PRODUCT_DETAILS = "/product/:id";

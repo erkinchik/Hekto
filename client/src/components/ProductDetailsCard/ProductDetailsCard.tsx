@@ -3,8 +3,16 @@ import back from "../../assets/back.png";
 
 import "./ProductDetailsCard.scss";
 import { IProduct } from "../../types/productTypes";
+import { Spinner } from "../index";
+interface productDetailsCardProps {
+  product: IProduct | null;
+}
 
-const ProductDetailsCard: FC = () => {
+const ProductDetailsCard: FC<productDetailsCardProps> = ({ product }) => {
+  if (!product) {
+    return <Spinner />;
+  }
+  console.log(product);
   return (
     <div className="products-details ">
       <div className="product-details__card">
@@ -27,10 +35,11 @@ const ProductDetailsCard: FC = () => {
 
         <article className="product-details__text">
           <div className="product-details__text-wrapper">
-            <h3 className="product-details__title">Playwood arm chair</h3>
-            <div className="product-details__rating">rating</div>
-            <span className="product-details__price">$32.00</span>
+            <h3 className="product-details__title">{product.name}</h3>
+            <div className="product-details__rating">{product.in_stock}</div>
+            <span className="product-details__price">${product.price}</span>
             <p className="product-details__description">
+              {product?.productInfo?.description}
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos
               explicabo nesciunt nihil non nulla perferendis possimus quae
               soluta voluptas. Lorem ipsum dolor sit amet, consectetur Lorem
@@ -39,9 +48,7 @@ const ProductDetailsCard: FC = () => {
               soluta voluptas. Lorem ipsum dolor sit amet, consectetur Lorem
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius
             </p>
-            <a href="#" className="product-details__cart-btn">
-              Add to cart
-            </a>
+            <button className="product-details__cart-btn">Add to cart</button>
             <div className="product-details__categories">
               <span>Categories:</span>&nbsp;
               <ul className="product-details__categories list">

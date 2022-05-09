@@ -1,11 +1,15 @@
 import React, { FC, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import { IDataBody } from "../../types/productTypes";
 import "./Auth.scss";
 import { useDispatch } from "react-redux";
-import { authFetch } from "../../store/action-creators/authAction";
+import { loginFetch } from "../../store/action-creators/authAction";
 import ErrorAlert from "../common/ErrorAlert/ErrorAlert";
+import { registrationBody } from "../../helpers/authHelper";
+import { registration } from "../../API/userApi";
+import { userInfo } from "os";
+import { LOGIN_ROUTE } from "../../utils/paths";
 
 interface AuthProps {
   data: IDataBody;
@@ -14,6 +18,7 @@ interface AuthProps {
 
 const Auth: FC<AuthProps> = ({ data, errorMessage }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [userState, setUserState] = useState({
     email: "",
@@ -21,10 +26,21 @@ const Auth: FC<AuthProps> = ({ data, errorMessage }) => {
   });
 
   const onChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setUserState({ ...userState, [e.target.name]: e.target.value });
+    setUserState({
+      ...userState,
+      [e.target.name]: e.target.value,
+    });
   };
-  const auth = () => {
-    dispatch(authFetch({ ...userState, email: userState.email.trim() }));
+  const auth = async () => {
+    const userInfo = { ...userState, email: userState.email.trim() };
+    if (data.type.toLowerCase() === "sign in") {
+      dispatch(loginFetch(userInfo));
+    } else {
+      const data = await registration(userInfo);
+      if (data) {
+        history.push(LOGIN_ROUTE);
+      }
+    }
   };
 
   return (
@@ -48,13 +64,15 @@ const Auth: FC<AuthProps> = ({ data, errorMessage }) => {
           placeholder="Password"
           onChange={onChange}
         />
+
         <Link className="fields__text" to="/forgotPass">
           Forgot your password?
         </Link>
       </div>
       <ErrorAlert errorMessage={errorMessage} />
+
       <button className="login-form__btn" onClick={auth}>
-        {data.btnText}
+        {data.type}
       </button>
       <Link to={data.linkTo} className="login-form__text">
         {data.fromText}

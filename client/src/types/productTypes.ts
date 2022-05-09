@@ -5,7 +5,7 @@ export interface IDataBody {
   title: string;
   subtitle: string;
   fromText: string;
-  btnText: string;
+  type: string;
   linkTo: string;
 }
 
@@ -18,7 +18,15 @@ export interface IProduct {
   category_id: number;
   in_stock: number;
   sale: boolean;
+  productInfo: IProductInfo;
 }
+interface IProductInfo {
+  description: string;
+  id: number;
+  product_id: number;
+  title: number;
+}
+
 export interface IProducts {
   count: number;
   rows: IProduct[];

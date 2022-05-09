@@ -12,6 +12,10 @@ export const login = async (userData: IUserTypes) => {
   localStorage.setItem("user", JSON.stringify(user));
   return user;
 };
+export const registration = async (userData: IUserTypes) => {
+  const { data } = await $host.post<IToken>(`/user/registration`, userData);
+  return data.token;
+};
 
 export const check = async () => {
   const { data } = await $authHost.get("/user/auth");

@@ -12,46 +12,44 @@ import { Link } from "react-router-dom";
 
 interface ProductCardProps {
   product: IProduct;
-  onClick: (id: number) => void;
+  onClick?: (id: number) => void;
 }
 
 const ProductCard: FC<ProductCardProps> = ({ product, onClick }) => {
   return (
-    <Link
-      className="card-body"
-      to={`/product/${product.id}`}
-      onClick={() => onClick(product.id)}
-    >
-      {product.sale && (
-        <div className="card-sale">
-          <SaleIcon />
+    <div className="card-body">
+      <Link to={`/product/${product.id}`}>
+        {product.sale && (
+          <div className="card-sale">
+            <SaleIcon />
+          </div>
+        )}
+        <div className="card-image">
+          <img src={camera} alt={product.name} />
         </div>
-      )}
-      <div className="card-image">
-        <img src={camera} alt={product.name} />
-      </div>
 
-      <div className="card-text">
-        <span className="card-text__name">{product.name}</span>
-        <span className="card-text__price">${product.price}</span>
-      </div>
+        <div className="card-text">
+          <span className="card-text__name">{product.name}</span>
+          <span className="card-text__price">${product.price}</span>
+        </div>
 
-      <div className="card-buttons">
-        <button className="card-buttons__add-btn">
-          <BasketIcon
-            className="card-buttons__basket-icon"
-            width="22"
-            height="22"
-          />
-        </button>
-        <button className="card-buttons__scale-btn">
-          <LoopIcon />
-        </button>
-        <button className="card-buttons__wish-btn">
-          <WishIcon />
-        </button>
-      </div>
-    </Link>
+        <div className="card-buttons">
+          <button className="card-buttons__add-btn">
+            <BasketIcon
+              className="card-buttons__basket-icon"
+              width="22"
+              height="22"
+            />
+          </button>
+          <button className="card-buttons__scale-btn">
+            <LoopIcon />
+          </button>
+          <button className="card-buttons__wish-btn">
+            <WishIcon />
+          </button>
+        </div>
+      </Link>
+    </div>
   );
 };
 
