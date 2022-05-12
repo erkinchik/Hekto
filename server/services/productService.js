@@ -77,7 +77,7 @@ class ProductService {
       [id]
     );
 
-    return product.length ? { ...product[0], productInfo } : [];
+    return product.length ? { ...product[0], productInfo: productInfo[0] } : [];
   }
 
   async delete(id) {
