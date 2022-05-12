@@ -1,10 +1,14 @@
 import React, { FC } from "react";
 
 import fff from "../../assets/back.png";
-
 import "./CartProductCard.scss";
+import { IProduct } from "../../types/productTypes";
 
-const CartProductCard: FC = () => {
+interface CartProductCardProps {
+  product: IProduct;
+}
+
+const CartProductCard: FC<CartProductCardProps> = ({ product }) => {
   return (
     <div className="product-cart">
       <div className="product-cart__inner">
@@ -12,10 +16,12 @@ const CartProductCard: FC = () => {
           <img src={fff} alt="" />
         </div>
         <div className="product-cart__text">
-          <h4 className="product-cart__title">Ut diam consequat</h4>
+          <h4 className="product-cart__title">
+            {product ? product.name : "Ut diam consequat"}
+          </h4>
           <ul className="product-cart__params">
-              <li className="product-cart__params-item">color: black</li>
-              <li className="product-cart__params-item">size: XL</li>
+            <li className="product-cart__params-item">color: black</li>
+            <li className="product-cart__params-item">size: XL</li>
           </ul>
         </div>
       </div>

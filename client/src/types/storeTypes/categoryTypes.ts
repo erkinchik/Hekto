@@ -25,7 +25,7 @@ interface FetchCategoryErrorAction {
 interface FetchCategoryAction {
     type: CategoryActionTypes.FETCH_CATEGORY;
 }
-export type CategoryAction =
+export type CategoryActions =
     | FetchCategoryAction
     | FetchCategorySuccessAction
     | FetchCategoryErrorAction;

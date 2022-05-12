@@ -1,7 +1,7 @@
 import {
   CategoryActionTypes,
   CategoryState,
-  CategoryAction,
+  CategoryActions,
 } from "../../types/storeTypes/categoryTypes";
 
 const initialState: CategoryState = {
@@ -12,7 +12,7 @@ const initialState: CategoryState = {
 
 export const categoryReducer = (
   state = initialState,
-  action: CategoryAction
+  action: CategoryActions
 ): CategoryState => {
   switch (action.type) {
     case CategoryActionTypes.FETCH_CATEGORY:

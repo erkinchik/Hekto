@@ -8,7 +8,9 @@ import { ReactComponent as LoopIcon } from "../../../assets/loop.svg";
 import { ReactComponent as WishIcon } from "../../../assets/wish.svg";
 import { ReactComponent as SaleIcon } from "../../../assets/saleIcon.svg";
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToBasket } from "../../../store/action-creators/basketAction";
 
 interface ProductCardProps {
   product: IProduct;
@@ -16,39 +18,52 @@ interface ProductCardProps {
 }
 
 const ProductCard: FC<ProductCardProps> = ({ product, onClick }) => {
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const handler: React.ChangeEventHandler<HTMLInputElement> = (e, product) => {
+    e.stopPropagation();
+    console.log(product);
+    dispatch(addToBasket(product));
+  };
+
   return (
-    <div className="card-body">
-      <Link to={`/product/${product.id}`}>
-        {product.sale && (
-          <div className="card-sale">
-            <SaleIcon />
-          </div>
-        )}
-        <div className="card-image">
-          <img src={camera} alt={product.name} />
+    <div
+      className="card-body"
+      onClick={() => history.push(`/product/${product.id}`)}
+    >
+      {product.sale && (
+        <div className="card-sale">
+          <SaleIcon />
         </div>
+      )}
+      <div className="card-image">
+        <img src={camera} alt={product.name} />
+      </div>
 
-        <div className="card-text">
-          <span className="card-text__name">{product.name}</span>
-          <span className="card-text__price">${product.price}</span>
-        </div>
+      <div className="card-text">
+        <span className="card-text__name">{product.name}</span>
+        <span className="card-text__price">${product.price}</span>
+      </div>
 
-        <div className="card-buttons">
-          <button className="card-buttons__add-btn">
-            <BasketIcon
-              className="card-buttons__basket-icon"
-              width="22"
-              height="22"
-            />
-          </button>
-          <button className="card-buttons__scale-btn">
-            <LoopIcon />
-          </button>
-          <button className="card-buttons__wish-btn">
-            <WishIcon />
-          </button>
-        </div>
-      </Link>
+      <div className="card-buttons">
+        <button
+          className="card-buttons__add-btn"
+          onClick={(e) => handler(e, product)}
+        >
+          <BasketIcon
+            className="card-buttons__basket-icon"
+            width="22"
+            height="22"
+          />
+        </button>
+        <button className="card-buttons__scale-btn">
+          <LoopIcon />
+        </button>
+        <button className="card-buttons__wish-btn">
+          <WishIcon />
+        </button>
+      </div>
     </div>
   );
 };

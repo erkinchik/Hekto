@@ -1,14 +1,14 @@
 import axios from "axios";
 
 import {
-  CategoryAction,
+  CategoryActions,
   CategoryActionTypes,
 } from "../../types/storeTypes/categoryTypes";
 import { Dispatch } from "redux";
 import { ICategory } from "../../types/categoryTypes";
 
 export const fetchCategories = () => {
-  return async (dispatch: Dispatch<CategoryAction>) => {
+  return async (dispatch: Dispatch<CategoryActions>) => {
     try {
       dispatch({ type: CategoryActionTypes.FETCH_CATEGORY });
       const { data } = await axios.get<ICategory[]>(
