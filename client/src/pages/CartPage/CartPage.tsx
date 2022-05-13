@@ -10,7 +10,7 @@ const CartPage = () => {
   console.log(basket);
   return (
     <div className="wrapper">
-      {basket.length ? (
+      {basket?.length ? (
         <div className="cart-products-wrapper">
           <div className="cart-products">
             <div className="cart-products__header">

@@ -6,6 +6,8 @@ import { BASKET_ROUTE, LOGIN_ROUTE } from "../../utils/paths";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useDispatch } from "react-redux";
 import { logOut } from "../../store/action-creators/authAction";
+import { getFromBasket } from "../../store/action-creators/basketAction";
+import { IUser } from "../../types/storeTypes/userTypes";
 
 const HeaderBar: FC = () => {
   const dispatch = useDispatch();
@@ -16,6 +18,8 @@ const HeaderBar: FC = () => {
     currency: ["USD", "KGZ", "RUB"],
   };
   const { user } = useTypedSelector((state) => state.auth);
+
+  console.log(user?.id);
   return (
     <div className="top-bar">
       <div className="info">
@@ -42,7 +46,15 @@ const HeaderBar: FC = () => {
             Login
           </Link>
         )}
-        <Link className="buttons__basket" to={BASKET_ROUTE}></Link>
+        <Link
+          className="buttons__basket"
+          to={BASKET_ROUTE}
+          onClick={() =>
+            user
+              ? dispatch(getFromBasket(user?.id))
+              : dispatch(getFromBasket(""))
+          }
+        ></Link>
       </div>
     </div>
   );

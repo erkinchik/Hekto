@@ -11,12 +11,12 @@ export interface IUser {
   email: string;
   exp: number | symbol | bigint;
   iat: number | symbol | bigint;
-  id: number | symbol;
+  id: number | string;
   role: string;
   token: string | null | symbol;
 }
 export interface AuthState {
-  user: IUser | null | string;
+  user: IUser | null;
   loading: boolean;
   error: null | string | object;
 }

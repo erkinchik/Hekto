@@ -5,7 +5,7 @@ import {
 } from "../../types/storeTypes/basketTypes";
 
 const initialState: BasketState = {
-  basket: [] || null,
+  basket: [],
 };
 
 export const basketReducer = (
@@ -15,6 +15,8 @@ export const basketReducer = (
   switch (action.type) {
     case BasketActionTypes.ADD_TO_BASKET:
       return { basket: [...state.basket, action.payload] };
+    case BasketActionTypes.GET_BASKET:
+      return { basket: [...action.payload] };
     // case BasketActionTypes.REMOVE_FROM_BASKET:
     //   return { loading: false, error: null, user: action.payload };
 

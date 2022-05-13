@@ -6,14 +6,13 @@ import {
 } from "../../types/storeTypes/productTypes";
 import { Dispatch } from "redux";
 import { IProducts } from "../../types/productTypes";
+import { ProductApi } from "../../API/productApi";
 
 export const fetchProducts = () => {
   return async (dispatch: Dispatch<ProductsAction>) => {
     try {
       dispatch({ type: ProductsActionTypes.FETCH_PRODUCTS });
-      const { data } = await axios.get<IProducts>(
-        "http://localhost:5000/device"
-      );
+      const data = await ProductApi.getAllProducts();
       console.log(data);
       dispatch({
         type: ProductsActionTypes.FETCH_PRODUCTS_SUCCESS,

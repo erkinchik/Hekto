@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { ChangeEvent, FC } from "react";
 
 import "./ProductCard.scss";
 import { IProduct } from "../../../types/productTypes";
@@ -21,9 +21,7 @@ const ProductCard: FC<ProductCardProps> = ({ product, onClick }) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const handler: React.ChangeEventHandler<HTMLInputElement> = (e, product) => {
-    e.stopPropagation();
-    console.log(product);
+  const handler = (product: IProduct): void => {
     dispatch(addToBasket(product));
   };
 
@@ -49,7 +47,10 @@ const ProductCard: FC<ProductCardProps> = ({ product, onClick }) => {
       <div className="card-buttons">
         <button
           className="card-buttons__add-btn"
-          onClick={(e) => handler(e, product)}
+          onClick={(e): void => {
+            e.stopPropagation();
+            handler(product);
+          }}
         >
           <BasketIcon
             className="card-buttons__basket-icon"
