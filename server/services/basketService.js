@@ -8,6 +8,13 @@ class BasketService {
     );
     return product.rows[0];
   }
+  async getProduct(basket_id) {
+    const products = await db.query(
+      "select * from basket_product bp left join product on bp.product_id = product.id where bp.basket_id = $1",
+      [basket_id]
+    );
+    return products.rows;
+  }
 }
 
 module.exports = new BasketService();
